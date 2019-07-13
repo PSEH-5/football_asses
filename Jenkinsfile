@@ -4,7 +4,11 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+            echo 'Building..'
+	            withMaven(){
+	            sh mvn clean install -Dmaven.test.skip=true
+	            }
+                
             }
         }
         stage('Test') {
